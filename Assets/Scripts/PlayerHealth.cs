@@ -1,40 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int currentHealth;
-    public int maxHealth;
+    [SerializeField] private HealthBar healthBar;
+    [SerializeField] private int currentHealth;
+    [SerializeField] private int maxHealth;
 
-    public static PlayerHealth instance;
+    public event Action OnKilled = null;
 
-
-    private void Awake()
-    {
-        instance = this;
-    }
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         currentHealth = maxHealth;
-        HealthBar.SetMaxHealth(currentHealth);
+        healthBar.SetMaxHealth(currentHealth);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RecieveDamage(int damage)
     {
-        
-    }
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
 
-    public void DealDamage()
-    {
-        currentHealth--;
-        HealthBar.SetHealth(currentHealth)
-
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
-            gameObject.SetActive(false);
+            OnKilled?.Invoke();
         }
     }
 }

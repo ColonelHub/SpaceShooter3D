@@ -1,36 +1,36 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    public Transform firePos;
-    public GameObject bullet;
+    [SerializeField] private Transform firePos;
+    [SerializeField] private Bullet bullet;
+    [SerializeField] private float fireRate;
 
-    // Start is called before the first frame update
-    void Start()
+    private bool canShoot = true;
+
+    public event Action<Bullet> OnBulletSpawned = null;
+
+    public void UpdateShooting()
     {
-        
-    }
-    // Update is called once per frame
-    void Update()
-    {
-       if(Input.GetButtonDown(0) && canShot)
+        if (Input.GetMouseButtonDown(0) && canShoot)
         {
             Shoot();
         }
     }
 
-
-    void Shoot()
+    private void Shoot()
     {
-        Instantiate(bullet, firePos.position, firePos.rotation);
+        Bullet obj = Instantiate(bullet, firePos.position, firePos.rotation);
+        OnBulletSpawned?.Invoke(obj);
         StartCoroutine(ShootDelay());
     }
-    IEnumerator ShootDelay()
+
+    private IEnumerator ShootDelay()
     {
-        canShot = false;
-        yield return new WaitForSeconds(timeBetweenShots);
-        canShot = true; 
+        canShoot = false;
+        yield return new WaitForSeconds(fireRate);
+        canShoot = true;
     }
 }

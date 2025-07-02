@@ -7,9 +7,9 @@ public class NewBehaviourScript : MonoBehaviour
     public float bulletSpeed;
     private Rigidbody rb;
 
-    private voide Awake()
+    private void Awake()
     {
-        Destroy(gameObject, 3f)
+        Destroy(gameObject, 3f);
     }
     // Start is called before the first frame update
     void Start()

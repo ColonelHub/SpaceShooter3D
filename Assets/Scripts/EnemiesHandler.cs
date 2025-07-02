@@ -42,9 +42,9 @@ public class EnemiesHandler : MonoBehaviour
         if (currentFireRateTimer <= 0)
         {
             List<Enemy> shootingEnemies = new List<Enemy>();
-            int maxIterations = 5;
             for (int i = 0; i < availableEnemiesToShoot; i++)
             {
+                int maxIterations = 5;
                 Enemy enemy = null;
 
                 do

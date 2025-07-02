@@ -10,6 +10,7 @@ public class Shooting : MonoBehaviour
 
     private bool canShoot = true;
 
+
     public event Action<Bullet> OnBulletSpawned = null;
 
     public void UpdateShooting()

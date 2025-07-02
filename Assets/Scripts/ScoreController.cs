@@ -8,6 +8,11 @@ public class ScoreController : MonoBehaviour
 
     private int currentScore = 0;
 
+    private void Awake()
+    {
+        UpdateUI();
+    }
+
     private void UpdateUI()
     {
         scoreText.text = "Score: " + currentScore;

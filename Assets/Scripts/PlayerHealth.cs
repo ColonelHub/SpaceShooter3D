@@ -7,6 +7,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int currentHealth;
     [SerializeField] private int maxHealth;
 
+    public int MaxHealth { get => maxHealth; }
+
     public event Action OnKilled = null;
 
     void Awake()
@@ -18,6 +20,7 @@ public class PlayerHealth : MonoBehaviour
     public void RecieveDamage(int damage)
     {
         currentHealth -= damage;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         healthBar.SetHealth(currentHealth);
 
         if (currentHealth <= 0)

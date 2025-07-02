@@ -43,14 +43,14 @@ public class Enemy : MonoBehaviour
     public void Shoot()
     {
         Bullet obj = Instantiate(bullet, firePos.position, firePos.rotation);
-        obj.OnCollidedWithObject += (collidedObject) =>
+        obj.OnCollidedWithObject += (col, collidedObject) =>
         {
             CanShoot = true;
+
             if (collidedObject.TryGetComponent(out PlayerHealth player))
             {
                 player.RecieveDamage(1);
             }
-            Destroy(obj.gameObject);
         };
     }
 

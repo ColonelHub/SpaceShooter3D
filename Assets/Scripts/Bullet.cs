@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -6,11 +7,14 @@ public class Bullet : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float lifeTime;
-    [SerializeField] private string tagToInteractWith;
+    [SerializeField] private GameObject bulletImpactExplosion;
+    [SerializeField] private List<string> tagToInteractWith;
 
     private Vector3 direction;
 
-    public event Action<GameObject> OnCollidedWithObject = null;
+    public GameObject BulletImpactExplosion { get => bulletImpactExplosion; }
+
+    public event Action<Collider, GameObject> OnCollidedWithObject = null;
 
     private void Awake()
     {
@@ -25,9 +29,16 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag(tagToInteractWith))
+        foreach (var item in tagToInteractWith)
         {
-            OnCollidedWithObject?.Invoke(other.gameObject);
+            if (other.gameObject.CompareTag(item))
+            {
+                GameObject explosion = Instantiate(BulletImpactExplosion, other.ClosestPoint(transform.position), Quaternion.identity);
+                Destroy(explosion, 1.5f);
+                OnCollidedWithObject?.Invoke(other, other.gameObject);
+                Destroy(gameObject);
+                break;
+            }
         }
     }
 }

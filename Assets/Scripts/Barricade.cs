@@ -25,7 +25,6 @@ public class Barricade : MonoBehaviour
     {
         currentHealth--;
         UpdateColor();
-        Destroy(other.gameObject);
         if (currentHealth <= 0)
         {
             Destroy(gameObject);

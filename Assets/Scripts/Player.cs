@@ -83,14 +83,12 @@ public class Player : MonoBehaviour
 
     private void ConfigureBullet(Bullet bullet)
     {
-        bullet.OnCollidedWithObject += (obj) =>
+        bullet.OnCollidedWithObject += (col, obj) =>
         {
             if (obj.TryGetComponent(out Enemy enemy))
             {
                 enemy.TakeDamage(1);
             }
-
-            Destroy(bullet.gameObject);
         };
     }
 
@@ -98,5 +96,13 @@ public class Player : MonoBehaviour
     {
         rb.velocity = Vector3.zero;
         xDirection = 0.0f;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            playerHealth.RecieveDamage(playerHealth.MaxHealth);
+        }
     }
 }

@@ -6,6 +6,8 @@ public class EnemiesHandler : MonoBehaviour
 {
     [SerializeField] private int maxEnemiesSimultaneousFiring = 2;
     [SerializeField] private float fireRate;
+    [SerializeField] private AudioClip shootSFX;
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] private List<Enemy> enemies = null;
 
     private float currentFireRateTimer = 0;
@@ -66,6 +68,7 @@ public class EnemiesHandler : MonoBehaviour
             }
 
             currentFireRateTimer = fireRate;
+            audioSource.PlayOneShot(shootSFX);
         }
     }
 

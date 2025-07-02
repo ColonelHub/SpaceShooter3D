@@ -7,6 +7,8 @@ public class Shooting : MonoBehaviour
     [SerializeField] private Transform firePos;
     [SerializeField] private Bullet bullet;
     [SerializeField] private float fireRate;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip shootSFX;
 
     private bool canShoot = true;
 
@@ -25,6 +27,7 @@ public class Shooting : MonoBehaviour
     {
         Bullet obj = Instantiate(bullet, firePos.position, firePos.rotation);
         OnBulletSpawned?.Invoke(obj);
+        audioSource.PlayOneShot(shootSFX);
         StartCoroutine(ShootDelay());
     }
 

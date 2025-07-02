@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da6327d83ded91d4dacd1f28d486e9ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealth: {fileID: 0}
   shootingHandler: {fileID: 3989694378879950924}
   moveSpeed: 5
   playerShip: {fileID: 3501852675683862394}
@@ -192,7 +193,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePos: {fileID: 1471055406605276854}
   bullet: {fileID: 7637193917826529044, guid: 285aae69d5655454e9f771076b822ee8, type: 3}
-  fireRate: 1
+  fireRate: 0.4
+  audioSource: {fileID: 0}
+  shootSFX: {fileID: 0}
 --- !u!114 &8008489814676192587
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -190,7 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: -8327431590374375796, guid: 8979deb2015fd004ab0770e2af222e47, type: 3}
   firePos: {fileID: 2981579887039571217}
-  moveSpeed: 5
+  moveSpeed: 2.5
 --- !u!114 &4254264821573583458
 MonoBehaviour:
   m_ObjectHideFlags: 0

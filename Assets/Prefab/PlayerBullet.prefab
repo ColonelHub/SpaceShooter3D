@@ -202,7 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 3696225101605902616}
   bulletSpeed: 5
-  lifeTime: 2.6
+  lifeTime: 10
   bulletImpactExplosion: {fileID: 2604199547662347416, guid: 6050d013e888aa847a971a2b58dfc62d, type: 3}
   explosionSFX: {fileID: 8300000, guid: 0bd05763df902854a80475577a26666a, type: 3}
   tagToInteractWith:

@@ -99,6 +99,7 @@ MonoBehaviour:
   bulletSpeed: 5
   lifeTime: 10
   bulletImpactExplosion: {fileID: 7759854869545606040, guid: 65b90d2bd7da82546b466730c85a9abc, type: 3}
+  explosionSFX: {fileID: 8300000, guid: 0bd05763df902854a80475577a26666a, type: 3}
   tagToInteractWith:
   - Player
   - Wall

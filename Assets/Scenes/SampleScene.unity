@@ -6603,7 +6603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 054880c3722a9d84cadcdcd834f56cec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxEnemiesSimultaneousFiring: 4
+  maxEnemiesSimultaneousFiring: 5
   fireRate: 5
   shootSFX: {fileID: 8300000, guid: a764377339b869e459f5e53fb9258f73, type: 3}
   audioSource: {fileID: 752188067}

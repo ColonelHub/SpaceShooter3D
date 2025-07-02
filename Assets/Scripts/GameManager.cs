@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     private void TriggerLose()
     {
+        enemiesHandler.CanFire = false;
         enemiesHandler.CanMove = false;
         endGameController.TriggerLoseUI();
     }

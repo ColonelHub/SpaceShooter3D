@@ -14,7 +14,7 @@ public class EnemiesHandler : MonoBehaviour
     private int availableEnemiesToShoot = 0;
 
     public static EnemiesHandler Instance { get; private set; }
-    public bool CanFire { get; private set; }
+    public bool CanFire { get; set; } = true;
     public bool CanMove { get; set; } = true;
 
     public event Action OnEnemyKilledEvent = null;
@@ -36,7 +36,7 @@ public class EnemiesHandler : MonoBehaviour
     {
         currentFireRateTimer -= Time.deltaTime;
 
-        if (enemies.Count <= 0)
+        if (enemies.Count <= 0 || !CanFire)
         {
             return;
         }
